@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <p class="text-center text-xl font-bold mb-4" *ngIf="!isRegisterFormVisible">Login</p>
+    <p class="text-center text-xl font-bold mb-4" *ngIf="isRegisterFormVisible">Register</p>
+    <div *ngIf="!isRegisterFormVisible">
+      <app-login></app-login>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-gray-600">Don't have an account?</p>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2" (click)="showRegisterForm()">Register</button>
+      </div>
+    </div>
+    <div *ngIf="isRegisterFormVisible" class="mt-4">
+      <app-register (registrationSuccess)="onRegistrationSuccess($event)"></app-register>
+      <div class="mt-4 text-center">
+        <button class="bg-red-500 text-white px-4 py-2 rounded" (click)="cancelRegistration()">Cancel</button>
+      </div>
+    </div>
+    <p *ngIf="registrationMessage" class="mt-4 text-green-500">{{ registrationMessage }}</p>
+  </div>
+</div>

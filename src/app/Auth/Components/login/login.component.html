@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="login()" class="space-y-4">
+  <div>
+    <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+    <input type="email" id="email" formControlName="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-red-500 text-sm mt-1">
+      <small *ngIf="form.get('email')?.errors?.['required']">Email is required.</small>
+      <small *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</small>
+    </div>
+  </div>
+  
+  <div>
+    <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+    <input type="password" id="password" formControlName="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+    <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-red-500 text-sm mt-1">
+      <small *ngIf="form.get('password')?.errors?.['required']">Password is required.</small>
+      <small *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+    </div>
+  </div>
+  
+  <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded">Login</button>
+</form>
+<div *ngIf="loginAlert" class="mt-4 text-red-500">
+  <p>Incorrect email or password.</p>
+  <button (click)="closeAlert()" class="mt-2 bg-red-500 text-white px-4 py-2 rounded">Close</button>
+</div>
