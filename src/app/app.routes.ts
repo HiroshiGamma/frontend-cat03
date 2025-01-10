@@ -15,6 +15,16 @@ export const routes: Routes = [
     canActivate: [UserGuard]
   },
   {
+    path: 'view-post',
+    loadComponent: () => import('../app/Post/Pages/view-post/view-post.component').then(m => m.ViewPostComponent),
+    canActivate: [UserGuard]
+  },
+  {
+    path: 'create-post',
+    loadComponent: () => import('../app/Post/Pages/create-post/create-post.component').then(m => m.CreatePostComponent),
+    canActivate: [UserGuard]
+  },
+  {
     path: '**',
     redirectTo: 'login',
   }

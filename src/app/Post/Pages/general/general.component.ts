@@ -16,4 +16,12 @@ export class GeneralComponent {
     this.localStorage.clearAll();
     this.router.navigate(['/login']);
   }
+
+  navigateToViewPost() {
+    this.router.navigate(['/view-post']);
+  }
+
+  navigateToCreatePost() {
+    this.router.navigate(['/create-post']);
+  }
 }

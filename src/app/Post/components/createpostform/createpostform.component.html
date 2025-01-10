@@ -1,0 +1,17 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <form [formGroup]="postForm" (ngSubmit)="submit()" class="space-y-6 bg-white p-6 rounded-lg shadow-md">
+    <div class="mb-4">
+      <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
+      <input type="text" id="title" formControlName="title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <div *ngIf="titleValidate" class="text-red-500 text-sm mt-1">Title is required and must be at least 5 characters long.</div>
+    </div>
+    <div class="mb-4">
+      <label for="image" class="block text-sm font-medium text-gray-700">Image:</label>
+      <input type="file" id="image" (change)="onFileSelected($event)" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <div *ngIf="imageValidate" class="text-red-500 text-sm mt-1">Image is required and must be a JPG or PNG not exceeding 5MB.</div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+    </div>
+  </form>
+</div>

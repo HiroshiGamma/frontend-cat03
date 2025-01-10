@@ -12,7 +12,7 @@ export class UserGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const token = this.localStorageService.getToken();
     const role = this.localStorageService.getVariable('role');
-    if (!!token && role === 'User') {
+    if (!!token && (role === 'User')) {
       return true;
     } else {
       this.router.navigate(['/login']);
